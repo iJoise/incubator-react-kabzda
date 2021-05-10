@@ -1,13 +1,15 @@
 import React from 'react';
 
-type PageTitlePropsType = {
+export type PageTitlePropsType = {
    title: string
+   /**
+    * optional Color of header page
+    */
+   color?: string
 }
 
-function PageTitle (props: PageTitlePropsType) {
+export function PageTitle (props: PageTitlePropsType) {
    return (
       <h1>{props.title}</h1>
    );
 }
-
-export default PageTitle;

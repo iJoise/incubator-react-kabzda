@@ -1,11 +1,11 @@
 import React from 'react';
 
-type OnOffPropsType = {
+export type OnOffPropsType = {
    on: boolean
    onChange: (value: boolean) => void
 }
 
-const OnOff:React.FC<OnOffPropsType> = ({on, onChange}) => {
+export const OnOff:React.FC<OnOffPropsType> = ({on, onChange}) => {
 
    const onOff = {
       width: '30px',
@@ -42,4 +42,3 @@ const OnOff:React.FC<OnOffPropsType> = ({on, onChange}) => {
    );
 };
 
-export default OnOff;

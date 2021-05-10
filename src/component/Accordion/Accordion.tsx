@@ -1,16 +1,30 @@
 import React from 'react';
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
+   /**
+    * Setting the Title for the Accordion
+    */
    titleValue: string,
+   /**
+    * Determining the Position of the Accordion
+    */
    collapsed: boolean
+   /**
+    * Callback with Accordion of local State
+    */
    setAccordionCollapsed: () => void
+   /**
+    * optional Color of header page
+    */
+   color?: string
 }
 
-function Accordion({collapsed, titleValue, setAccordionCollapsed}: AccordionPropsType) {
+export function Accordion({collapsed, titleValue, setAccordionCollapsed, color}: AccordionPropsType) {
       return (
          <div>
             <AccordionTitle title={titleValue}
                             setAccordionCollapsed={setAccordionCollapsed}
+                            color={color}
             />
             {!collapsed && <AccordionBody/>}
          </div>
@@ -20,10 +34,14 @@ function Accordion({collapsed, titleValue, setAccordionCollapsed}: AccordionProp
 type AccordionTitlePropsType = {
    title: string
    setAccordionCollapsed: () => void
+   color?: string
 }
 
-function AccordionTitle({title, setAccordionCollapsed}: AccordionTitlePropsType) {
-   return <h3 onClick={setAccordionCollapsed}>{title}</h3>
+function AccordionTitle({title, setAccordionCollapsed, color}: AccordionTitlePropsType) {
+   return <h3
+      onClick={setAccordionCollapsed}
+      style={{color : color ? color : 'blue'}}
+   >{title}</h3>
 }
 
 function AccordionBody() {
@@ -36,6 +54,5 @@ function AccordionBody() {
    );
 }
 
-export default Accordion;
 
 

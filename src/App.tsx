@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './App.scss';
-import Accordion from './component/Accordion/Accordion';
-import Rating, {RatingValueType} from "./component/Raiting/Rating";
-import OnOff from "./component/OnOff/OnOff";
-import UnControledOnOff from './component/UnControledOnOff/UnControledOnOff';
+import {Accordion} from './component/Accordion/Accordion';
+import {Rating, RatingValueType} from "./component/Raiting/Rating";
+import {OnOff} from "./component/OnOff/OnOff";
+import {UnControledOnOff} from './component/UnControledOnOff/UnControledOnOff';
 
 //function declaration
 
@@ -28,7 +28,7 @@ function App() {
          {/*
 
          <UnControledAccordion titleValue={'Menu'}/>
-         <PageTitle title={"This is APP component"}/>
+         <PageTitle  style={{props.colors ? props.colors : 'blue'}} title={"This is APP component"}/>
          <Accordion titleValue={'Users'} collapsed={false}/>
          <Rating value={0}/>
          <Rating value={1}/>

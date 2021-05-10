@@ -2,12 +2,19 @@ import React from 'react';
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 
-type RatingPropsType = {
+export type RatingPropsType = {
+   /**
+    * Value for Rating, Defines possible values
+    */
    value: RatingValueType
+   /**
+    * Sets the desired value for the rating
+    * @param value
+    */
    onClick: (value: RatingValueType) => void
 }
 
-function Rating({value, onClick}: RatingPropsType) {
+export function Rating({value, onClick}: RatingPropsType) {
    return (
       <div>
          <Star value={1} onClick={onClick} selected={value > 0}/>
@@ -32,5 +39,3 @@ function Star({selected, value, onClick}: StarPropsType) {
       {selected ? <b>star </b> : 'star '}
    </span>
 }
-
-export default Rating;
