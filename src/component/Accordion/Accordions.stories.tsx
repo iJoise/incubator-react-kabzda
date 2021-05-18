@@ -26,7 +26,39 @@ export default {
    },
 };
 
-const callback = action('accordion mode change event fired')
+const callback = action('accordion mode change event fired');
+const onClickCallback = action('some item was clicked')
+
+
+const Template: Story<AccordionPropsType> = (args) => <Accordion {...args} />;
+
+export const MenuCollapsedMode = Template.bind({});
+MenuCollapsedMode.args = {
+   titleValue: 'Menu',
+   collapsed: true,
+   setAccordionCollapsed: callback,
+   items: [
+      {title: 'Polina', value: 1},
+      {title: 'Kirill', value: 2},
+      {title: 'Ilya', value: 3},
+      {title: 'Anastasiya', value: 4}
+   ],
+   onClickItem: onClickCallback
+}
+
+export const UsersCollapsedMode = Template.bind({});
+UsersCollapsedMode.args = {
+   titleValue: 'Users',
+   collapsed: false,
+   setAccordionCollapsed: callback,
+   items: [
+      {title: 'Polina', value: 1},
+      {title: 'Kirill', value: 2},
+      {title: 'Ilya', value: 3},
+      {title: 'Anastasiya', value: 4}
+   ],
+   onClickItem: (value) => alert(`user with ID ${value} should be happy`)
+}
 
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
    const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true);
@@ -37,21 +69,11 @@ export const ModeChanging: Story<AccordionPropsType> = (args) => {
 }
 ModeChanging.args = {
    titleValue: 'Menu',
+   items: [
+      {title: 'Polina', value: 1},
+      {title: 'Kirill', value: 2},
+      {title: 'Ilya', value: 3},
+      {title: 'Anastasiya', value: 4}
+   ],
+   onClickItem: (value) => alert(`user with ID ${value} should be happy`)
 }
-
-const Template: Story<AccordionPropsType> = (args) => <Accordion {...args} />;
-
-export const MenuCollapsedMode = Template.bind({});
-MenuCollapsedMode.args = {
-   titleValue: 'Menu',
-   collapsed: true,
-   setAccordionCollapsed: callback
-}
-
-export const UsersCollapsedMode = Template.bind({});
-UsersCollapsedMode.args = {
-   titleValue: 'Users',
-   collapsed: false,
-   setAccordionCollapsed: callback
-}
-

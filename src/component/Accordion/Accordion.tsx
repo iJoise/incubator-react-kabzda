@@ -1,5 +1,10 @@
 import React from 'react';
 
+type ItemType = {
+   title: string
+   value: any
+}
+
 export type AccordionPropsType = {
    /**
     * Setting the Title for the Accordion
@@ -17,18 +22,28 @@ export type AccordionPropsType = {
     * optional Color of header page
     */
    color?: string
+   onClickItem: (value: any) => void
+   items: ItemType[]
 }
 
-export function Accordion({collapsed, titleValue, setAccordionCollapsed, color}: AccordionPropsType) {
-      return (
-         <div>
-            <AccordionTitle title={titleValue}
-                            setAccordionCollapsed={setAccordionCollapsed}
-                            color={color}
-            />
-            {!collapsed && <AccordionBody/>}
-         </div>
-      );
+export function Accordion(
+   {
+      collapsed,
+      titleValue,
+      setAccordionCollapsed,
+      color,
+      items,
+      onClickItem
+   }: AccordionPropsType) {
+   return (
+      <div>
+         <AccordionTitle title={titleValue}
+                         setAccordionCollapsed={setAccordionCollapsed}
+                         color={color}
+         />
+         {!collapsed && <AccordionBody items={items} onClickItem={onClickItem}/>}
+      </div>
+   );
 }
 
 type AccordionTitlePropsType = {
@@ -37,19 +52,29 @@ type AccordionTitlePropsType = {
    color?: string
 }
 
-function AccordionTitle({title, setAccordionCollapsed, color}: AccordionTitlePropsType) {
+function AccordionTitle(
+   {
+      title,
+      setAccordionCollapsed,
+      color
+   }: AccordionTitlePropsType) {
+
    return <h3
       onClick={setAccordionCollapsed}
-      style={{color : color ? color : 'blue'}}
+      style={{color: color ? color : 'blue'}}
    >{title}</h3>
 }
 
-function AccordionBody() {
+type AccordionBodyPropsType = {
+   items: ItemType[]
+   onClickItem: (value: any) => void
+}
+
+function AccordionBody({items, onClickItem}:AccordionBodyPropsType) {
+
    return (
       <ul>
-         <li>1</li>
-         <li>2</li>
-         <li>3</li>
+         {items.map((el, index) => <li onClick={() => {onClickItem(el.value)}} key={index}>{el.title}</li> )}
       </ul>
    );
 }
