@@ -1,7 +1,6 @@
-import {UnControledAccordion, AccordionPropsType} from './UnControledAccordion';
-import React, {useState} from "react";
+import {UnControlledAccordion, AccordionPropsType} from './UnControlledAccordion';
+import React from "react";
 import {Story} from "@storybook/react";
-import {action} from "@storybook/addon-actions";
 //Функция для установки категории
 const categoryAsk = (categoryName: string) => ({
        table: {
@@ -10,8 +9,8 @@ const categoryAsk = (categoryName: string) => ({
     })
 
 export default {
-   title: 'UnControledAccordion/UnControledAccordion',
-   component: UnControledAccordion,
+   title: 'UnControlledAccordion/UnControlledAccordion',
+   component: UnControlledAccordion,
    argTypes: {
       titleValue: {
          //Разворачиваем возвращаемое функцией
@@ -20,10 +19,8 @@ export default {
    },
 };
 
-const callback = action('accordion mode change event fired')
-
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
-   return <UnControledAccordion {...args}/>
+   return <UnControlledAccordion {...args}/>
 }
 ModeChanging.args = {
    titleValue: 'Menu',

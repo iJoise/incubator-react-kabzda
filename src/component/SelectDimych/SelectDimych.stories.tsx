@@ -16,9 +16,6 @@ export default {
    argTypes: {},
 };
 
-const callback = action('accordion mode change event fired');
-const onClickCallback = action('some item was clicked');
-
 export const ModeChanging: Story<SelectDimychPropsType> = (args) => {
    const [value, setValue] = useState('2');
    return <SelectDimych {...args}
