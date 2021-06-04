@@ -1,7 +1,6 @@
 * {
   padding: 0;
   margin: 0;
-  border: 0;
 }
 *,
 *:before,
@@ -36,14 +35,8 @@ body {
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-input,
-button,
-textarea {
-  font-family: Roboto, serif;
-}
-input::-ms-clear {
-  display: none;
-}
+
+
 button {
   cursor: pointer;
 }
