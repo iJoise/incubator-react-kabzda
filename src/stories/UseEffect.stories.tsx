@@ -51,9 +51,13 @@ export const SetTimeoutExample = () => {
    console.log('SetTimeoutExample run');
 
    useEffect(() => {
-      setInterval(() => {
+      const interval = setInterval(() => {
          setCounter( (state: number) => state + 1)
       }, 1000)
+
+      return () => {
+         clearInterval(interval)
+      }
    }, []);
 
 

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.scss';
 // import {Select} from "./component/Select/Select";
 import {SelectDimych} from "./component/SelectDimych/SelectDimych";
+import {Clock} from "./component/Clock/Clock";
 // import {Accordion} from './component/Accordion/Accordion';
 // import {Rating, RatingValueType} from "./component/Raiting/Rating";
 // import {OnOff} from "./component/OnOff/OnOff";
@@ -28,6 +29,8 @@ function App() {
    return (
       <div className="App">
 
+         <Clock/>
+         <br/><br/><br/><br/><br/>
          <SelectDimych items={selectItem} value={value} onChange={setValue} />
 
          {/*<Select*/}
