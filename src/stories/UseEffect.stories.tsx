@@ -44,7 +44,7 @@ export const SimpleExample = () => {
 
 }
 
-export const SetTimeoutExample = () => {
+export const SetIntervalExample = () => {
    const [counter, setCounter] = useState(1);
    const [fake, setFake] = useState(1);
 
@@ -68,9 +68,58 @@ export const SetTimeoutExample = () => {
          Hello,
          <div>counter:{counter} </div>
          <div>fake :{fake}</div>
-         {/*<button onClick={ () => setFake(fake + 1) }>fake +</button>*/}
-         {/*<button onClick={ () => setCounter(counter + 1) }>counter +</button>*/}
       </>
    )
+}
+
+
+export const KeysTrackerExample = () => {
+   const [text, setText] = useState('');
+
+   console.log(`Component render with ${text}`);
+
+   useEffect(() => {
+      const handler = (e: KeyboardEvent) => {
+         console.log(e.key);
+         setText(text + e.key);
+      }
+
+      window.addEventListener('keypress', handler);
+      return () => {
+         window.removeEventListener('keypress', handler);
+      }
+   }, [text]);
+
+   return (
+      <>
+         Typed text: {text}
+      </>
+   )
+
+}
+
+export const SetTimeoutExample = () => {
+   const [text, setText] = useState('');
+
+   console.log(`Component render with ${text}`);
+
+   useEffect(() => {
+
+      const timeoutID = setTimeout(() => {
+         console.log('Timeout expired')
+         setText('3 second passed')
+      }, 3000)
+
+      return () => {
+         clearTimeout(timeoutID);
+      }
+   }, [text]);
+
+   return (
+      <>
+         Typed text: {text}
+      </>
+   )
+
 }
 
